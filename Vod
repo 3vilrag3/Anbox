@@ -68,12 +68,6 @@
       "type": 4
      },
     {
-      "api": "https://raw.githubusercontent.com/heroaku/TVboxo/refs/heads/main/XBPQ/泥视频VIP.json"}
-      "key": "泥视频XBPQ",
-      "name": "泥视频X｜影视"
-      "type": 3
-    },
-    {
       "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/json/?ac=list",
       "categories": [
         "国产剧",
