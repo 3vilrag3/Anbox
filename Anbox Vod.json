@@ -328,7 +328,7 @@
   "changeable": 1
 },
 {
-  "key": "爱奇艺,
+  "key": "爱奇艺",
   "name": "爱奇艺",
   "type": 1,
   "api": "https://www.iqiyizyapi.com/api.php/provide/vod/?ac=list",
