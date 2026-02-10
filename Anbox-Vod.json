@@ -15,7 +15,7 @@
     },
     {
       "api": "https://newtv.ggff.net/oule?token=P69Phb_y",
-      "key": ". 歐樂影院",
+      "key": "歐樂影院",
       "name": "歐樂影院",
       "type": 4
     },     
@@ -371,4 +371,17 @@
   ],
   "searchable": 1,
   "changeable": 1
+ },
+    {
+      "api": "csp_AiyfAmns",
+      "changeable": 1,
+      "filterable": 1,
+      "jar": "https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/bfdb--cvdvds.png",
+      "key": "爱壹帆",
+      "name": "爱壹帆",
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    }
+  ]
 }
