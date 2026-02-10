@@ -61,10 +61,13 @@
       "name": "荐片",
       "type": 4
     },
+{"key":"百度影视","name":"百度影视","type":1,"api":"https://api.apibdzy.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
+{"key":"阿里资源","name":"阿里资源","type":1,"api":"https://alivod.com/api.php/provide/vod","searchable":1,"quickSearch":1},
 {"key":"索尼资源","name":"索尼资源","type":1,"api":"https://suoniapi.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
 {"key":"电影天堂","name":"电影天堂","type":1,"api":"http://caiji.dyttzyapi.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
 {"key":"天涯资源","name":"天涯资源","type":1,"api":"https://tyyszyapi.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
 {"key":"如意资源","name":"如意资源","type":1,"api":"https://cj.rycjapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1},
+{"key":"鸭鸭资源","name":"鸭鸭资源","type":1,"api":"https://cj2.yayazy.net/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
 {"key":"魔都资源","name":"魔都资源","api": "https://www.mdzyapi.com/api.php/provide/vod/","type":1,"searchable":1,"quickSearch":1},
 {"key":"旺旺资源","name":"旺旺资源","api": "https://api.wwzy.tv/api.php/provide/vod/?ac=list","type":1,"searchable":1,"quickSearch":1},
 {"key":"豆瓣资源","name":"豆瓣资源","api": "https://caiji.dbzy.tv/api.php/provide/vod/at/josn/","type":1,"searchable":1,"quickSearch":1},
