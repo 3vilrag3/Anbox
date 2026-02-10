@@ -288,7 +288,7 @@
   ],
   "searchable": 1,
   "changeable": 1
- },
+ 
 ##PY源系列
 {"key": "瓜子py","name": "🕯️┃瓜子py┃影视","type": 3,"api": "./py/瓜子.py","searchable": 1,"quickSearch": 0,"filterable": 0,"changeable": 0},
 {"key": "hollymoviehd","name": "🛳️┃好莱坞┃影视","type": 3,"api": "./py/好莱坞.py","searchable": 1,"quickSearch": 0,"filterable": 0,"changeable": 0},
