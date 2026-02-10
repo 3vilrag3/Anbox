@@ -328,10 +328,10 @@
   "changeable": 1
   },
   {
-  "key": "爱奇艺",
-  "name": "爱奇艺",
+  "key": "iKun",
+  "name": "iKun",
   "type": 1,
-  "api": "https://www.iqiyizyapi.com/api.php/provide/vod/?ac=list",
+  "api": "https://ikunzyapi.com/api.php/provide/vod/at/json",
   "categories": [
   "國產剧",
   "台剧",
