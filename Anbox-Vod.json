@@ -61,13 +61,6 @@
       "name": "荐片",
       "type": 4
       },
-      {
-            "key": "永乐影视",
-            "name": "🎎永乐｜影视",
-            "type": 3,
-            "api": "csp_XBPQ",
-            "ext": "https://raw.githubusercontent.com/swhtv/box/refs/heads/main/%E6%B0%B8%E4%B9%90%E5%BD%B1%E8%A7%86.json"
-      },    
 {"key":"百度影视","name":"百度影视","type":1,"api":"https://api.apibdzy.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
 {"key":"阿里资源","name":"阿里资源","type":1,"api":"https://alivod.com/api.php/provide/vod","searchable":1,"quickSearch":1},
 {"key":"索尼资源","name":"索尼资源","type":1,"api":"https://suoniapi.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
