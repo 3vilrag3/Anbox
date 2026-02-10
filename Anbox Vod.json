@@ -94,8 +94,8 @@
       "type": 3
     },
 {
-  "key": "優質",
-  "name": "優質",
+  "key": "如意",
+  "name": "如意",
   "type": 1,
   "api": "https://api.yzzy-api.com/inc/apijson.php?ac=list",
   "categories": [
@@ -118,10 +118,10 @@
   "changeable": 1
 },
 {
-  "key": "OK",
-  "name": "OK",
+  "key": "影剧",
+  "name": "影剧",
   "type": 1,
-  "api": "https://okzyapi.com/api.php/provide/vod/?ac=list",
+  "api": "https://caiji.maotaizy.cc/api.php/provide/vod/at/josn/",
   "categories": [
 "国产剧",
 "欧美剧",
@@ -158,10 +158,10 @@
   "changeable": 1
 },
 {
-  "key": "閃電",
-  "name": "閃電",
+  "key": "魔都",
+  "name": "魔都",
   "type": 1,
-  "api": "https://xsd.sdzyapi.com/api.php/provide/vod/?ac=list",
+  "api": "https://www.mdzyapi.com/api.php/provide/vod/?ac=list",
   "categories": [
   "国产剧",
   "欧美剧",
@@ -328,10 +328,10 @@
   "changeable": 1
   },
   {
-  "key": "鴨鴨",
-  "name": "鴨鴨",
+  "key": "爱奇艺",
+  "name": "爱奇艺",
   "type": 1,
-  "api": "https://cj.yayazy.net/api.php/provide/vod/?ac=list",
+  "api": "https://www.iqiyizyapi.com/api.php/provide/vod/?ac=list",
   "categories": [
   "國產剧",
   "台剧",
