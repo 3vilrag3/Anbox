@@ -62,7 +62,6 @@
       "type": 4
     },
 {"key": "飞快","name": "🥊┃飞快┃TV","type": 3,"api": "https://cnb.cool/junchao.tang/jtv/-/git/raw/main/py/飞快_pan.py","searchable": 1,"quickSearch": 0,"filterable": 0,"changeable": 0},
-{"key":"瓜子瓜子影视","name":"瓜子影视","type":3,"api":"csp_GuaziAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":"https://cloud.7so.top/f/1r61hq/guazi.json","jar":"./jar/嗷嗚.png;md5;796c14b118450f2325a5c8a0d2ce341d"},    
 {"key":"百度影视","name":"百度影视","type":1,"api":"https://api.apibdzy.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
 {"key":"阿里资源","name":"阿里资源","type":1,"api":"https://alivod.com/api.php/provide/vod","searchable":1,"quickSearch":1},
 {"key":"索尼资源","name":"索尼资源","type":1,"api":"https://suoniapi.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
