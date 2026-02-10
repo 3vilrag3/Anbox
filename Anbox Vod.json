@@ -97,7 +97,7 @@
   "key": "如意",
   "name": "如意",
   "type": 1,
-  "api": "https://api.yzzy-api.com/inc/apijson.php?ac=list",
+  "api": "https://cj.rycjapi.com/api.php/provide/vod/?ac=list",
   "categories": [
  "国产剧",
  "香港剧",
