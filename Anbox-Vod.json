@@ -98,8 +98,6 @@
   "name": "金鹰",
   "type": 1,
   "api": "https://jyzyapi.com/provide/vod/",
-  "searchable": 1,
-  "quickSearch": 1,
   "categories": [
   "欧美剧",
   "香港剧",
@@ -123,17 +121,15 @@
   "综艺",
   "台湾剧",
   "体育赛事"
-  ]
+  ],
+  "searchable": 1,
+  "quickSearch": 1
+},
 {
   "key": "卧龙资源",
   "name": "卧龙",
   "type": 1,
   "api": "https://collect.wolongzyw.com/api.php/provide/vod/",
-  "searchable": 1,
-  "quickSearch": 1,
-  "filterable": 1,
-  "playUrl": "",
-  "playerType": 2,
   "categories": [
   "国产剧",
   "欧美剧",
@@ -167,7 +163,10 @@
   "港台综艺",
   "日韩综艺",
   "欧美综艺"
-  ]
+  ],
+  "searchable": 1,
+  "quickSearch": 1
+},
 {
   "key": "魔都",
   "name": "魔都",
@@ -378,8 +377,6 @@
   "name": "无尽",
   "type": 1,
   "api": "https://api.wujinapi.me/api.php/provide/vod/",
-  "searchable": 1,
-  "quickSearch": 1,
   "categories": [
   "国产剧",
   "香港剧",
@@ -411,15 +408,18 @@
   "泰剧",
   "体育赛事",
   "体育赛事"
-  ]
-    {
-      "api": "csp_AiyfAmns",
-      "changeable": 1,
-      "filterable": 1,
-      "jar": "https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/bfdb--cvdvds.png",
-      "key": "爱壹帆",
-      "name": "爱壹帆",
-      "quickSearch": 1,
-      "searchable": 1,
-      "type": 3
+  ],
+  "searchable": 1,
+  "quickSearch": 1
+},
+{
+  "api": "csp_AiyfAmns",
+  "changeable": 1,
+  "filterable": 1,
+  "jar": "https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/bfdb--cvdvds.png",
+  "key": "爱壹帆",
+  "name": "爱壹帆",
+  "quickSearch": 1,
+  "searchable": 1,
+  "type": 3
     }
