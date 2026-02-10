@@ -61,8 +61,8 @@
       "name": "荐片",
       "type": 4
     },
-{"key": "飞快","name": "🥊┃飞快┃TV","type": 3,"api": "https://cnb.cool/junchao.tang/jtv/-/git/raw/main/py/飞快_pan.py","searchable": 1,"quickSearch": 0,"filterable": 0,"changeable": 0},    
-{"key":"瓜子","name":"🍉┃瓜子┃影视","type":3,"api":"csp_GuaziAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":"https://cloud.7so.top/f/1r61hq/guazi.json","jar":"./jar/嗷嗚.png;md5;796c14b118450f2325a5c8a0d2ce341d"},
+
+    
 {"key":"百度影视","name":"百度影视","type":1,"api":"https://api.apibdzy.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
 {"key":"阿里资源","name":"阿里资源","type":1,"api":"https://alivod.com/api.php/provide/vod","searchable":1,"quickSearch":1},
 {"key":"索尼资源","name":"索尼资源","type":1,"api":"https://suoniapi.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
@@ -82,7 +82,7 @@
 {"key":"光速资源","name":"光速资源","api": "https://api.guangsuapi.com/api.php/provide/vod/","type":1,"searchable":1,"quickSearch":1},
 {"key":"360资源","name":"360资源","api": "https://360zy.com/api.php/provide/vod/","type":1,"searchable":1,"quickSearch":1},
 {"key":"牛牛资源","name":"牛牛资源","api": "https://api.niuniuzy.me/api.php/provide/vod/","type":1,"searchable":1,"quickSearch":1},
-{"key":"丫丫资源","name":"丫丫资源","api": "https://cj.yayazy.net/api.php/provide/vod/","type":1,"searchable":1,"quickSearch":1},
+{"key":"丫丫资源","name":"丫丫资源","api": "https://cj.yayazy.net/api.php/provide/vod/?ac=list","type":1,"searchable":1,"quickSearch":1},
 {"key":"红牛资源","name":"红牛资源","type":1,"api":"https://www.hongniuzy2.com/api.php/provide/vod/","searchable":0,"quickSearch":0},
 {"key":"无尽资源","name":"无尽资源","type":1,"api":"https://api.wujinapi.me/api.php/provide/vod/","searchable":1,"quickSearch":1},
 {"key":"金鹰资源","name":"金鹰资源","type":1,"api":"http://jinyingzy.com/provide/vod/","searchable":1,"quickSearch":1},
