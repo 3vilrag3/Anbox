@@ -61,7 +61,7 @@
       "name": "荐片",
       "type": 4
     },    
-{"key":"独播库","name":"独播库","type":1,"api":"https://www.dbku.tv/","searchable":1,"quickSearch":1},
+{"key":"独播库","name":"独播库","type":1,"api":"https://github.com/3vilrag3/Anbox-Vod/blob/main/duboku.js","searchable":1,"quickSearch":1},
 {"key":"百度影视","name":"百度影视","type":1,"api":"https://api.apibdzy.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
 {"key":"阿里资源","name":"阿里资源","type":1,"api":"https://alivod.com/api.php/provide/vod","searchable":1,"quickSearch":1},
 {"key":"索尼资源","name":"索尼资源","type":1,"api":"https://suoniapi.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
