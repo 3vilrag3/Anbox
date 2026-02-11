@@ -61,7 +61,7 @@
       "name": "荐片",
       "type": 4
       },
-
+{"key":"荐片","name":"荐片(SP)","api":"csp_Jianpian","type":3,"playerType":"2","ext":"https://ev5356.970xw.com"},
 {"key":"极速资源","name":"极速资源","type":1,"api":"https://jszyapi.com/api.php/provide/vod/at/json","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"优酷资源","name":"优酷资源","type":1,"api":"https://api.ukuapi88.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"百度影视","name":"百度影视","type":1,"api":"https://api.apibdzy.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
