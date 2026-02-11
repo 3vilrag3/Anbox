@@ -64,7 +64,6 @@
 {"key":"鬼片之家","name":"鬼片之家┃影视","type": 3,"api": "./laozhang/鬼片之家.js","searchable":1,"changeable": 1,"jar":"./jar/zhang.jar"},
 {"key":"海龟","name":"海龟┃影视","type": 3,"api": "./laozhang/海龟.js","searchable":1,"changeable": 1,"jar":"./jar/zhang.jar"},
 {"key":"apple","name":"苹果┃影视","type": 3,"api": "./laozhang/apple.js","changeable": 1,"jar":"./jar/zhang.jar"},
-{"key":"映迷","name":"映迷","type":1,"api":"https://www.inmi.app/api.php/provide/vod","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"影剧资源","name":"影剧资源","type":1,"api":"https://caiji.maotaizy.cc/api.php/provide/vod/at/josn/","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"闪电资源","name":"闪电资源","type":1,"api":"https://xsd.sdzyapi.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"无水印资源","name":"无水印资源","type":1,"api":"https://api.wsyzy.net/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1,"filterable":1},
