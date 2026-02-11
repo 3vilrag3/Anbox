@@ -71,7 +71,7 @@
 {"key":"猫眼资源","name":"猫眼资源","type":1,"api":"https://api.maoyanapi.top/api.php/provide/vod/at/json","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"暴風资源","name":"暴風资源","type":1,"api":"https://bfzyapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"爱奇艺","name":"爱奇艺","type":1,"api":"https://iqiyizyapi.com/api.php/provide/vod","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"极速资源","name":"爱奇艺","type":1,"api":"https://jszyapi.com/api.php/provide/vod/at/json","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"极速资源","name":"极速资源","type":1,"api":"https://jszyapi.com/api.php/provide/vod/at/json","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"优酷资源","name":"优酷资源","type":1,"api":"https://api.ukuapi88.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"百度影视","name":"百度影视","type":1,"api":"https://api.apibdzy.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
 {"key":"阿里资源","name":"阿里资源","type":1,"api":"https://alivod.com/api.php/provide/vod","searchable":1,"quickSearch":1},
