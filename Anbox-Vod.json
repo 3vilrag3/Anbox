@@ -61,6 +61,7 @@
       "name": "荐片",
       "type": 4
       },
+{"key":"永乐视频","name":"永乐视频┃影视","type": 3,"api": "./laozhang/永乐视频.js","searchable":1,"changeable": 1,"jar":"./jar/zhang.jar"},    
 {"key":"鬼片之家","name":"鬼片之家┃影视","type": 3,"api": "./laozhang/鬼片之家.js","searchable":1,"changeable": 1,"jar":"./jar/zhang.jar"},
 {"key":"海龟","name":"海龟┃影视","type": 3,"api": "./laozhang/海龟.js","searchable":1,"changeable": 1,"jar":"./jar/zhang.jar"},
 {"key":"apple","name":"苹果┃影视","type": 3,"api": "./laozhang/apple.js","changeable": 1,"jar":"./jar/zhang.jar"},
