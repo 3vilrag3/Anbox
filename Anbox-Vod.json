@@ -61,7 +61,7 @@
       "name": "荐片",
       "type": 4
       },
-{"key":"爱看","name":"🤖┃机器人┃爱看","type":3,"api":"https://gh-proxy.org/https://raw.githubusercontent.com/alantang1977/dr_py/main/libs/drpy2.min.js","searchable":2,"quickSearch":1,"filterable":0,"ext":"https://gh-proxy.org/https://raw.githubusercontent.com/alantang1977/X/refs/heads/main/py/爱看机器人[虫].js"}    
+{"key":"爱看","name":"🤖┃机器人┃爱看","type":3,"api":"https://github.dpik.top/https://github.com/3vilrag3/Anbox-Vod/blob/main/libs/drpy2.min.js","searchable":2,"quickSearch":1,"filterable":0,"ext":"https://github.dpik.top/https://github.com/3vilrag3/Anbox-Vod/blob/main/py/爱看机器人[虫].js"}    
 {"key": "3Q","name":"3Q影视","type": 3,"api": "./laozhang/3Q影视.js","style": {"type": "rect","ratio": 1.33},"changeable": 1,"jar":"./jar/zhang.jar"},
 {"key": "独播库","name":"独播库┃影视","type": 3,"api": "./laozhang/独播库.js","style": {"type": "rect","ratio": 1.33},"changeable": 1,"jar":"./jar/zhang.jar"},
 {"key": "鬼片之家","name":"鬼片之家┃影视","type": 3,"api": "./laozhang/鬼片之家.js","style": {"type": "rect","ratio": 1.33},"changeable": 1,"jar":"./jar/zhang.jar"},
