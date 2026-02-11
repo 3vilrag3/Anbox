@@ -63,7 +63,6 @@
       },
 {"key":"鬼片之家","name":"鬼片之家┃影视","type": 3,"api": "./laozhang/鬼片之家.js","searchable":1,"changeable": 1,"jar":"./jar/zhang.jar"},
 {"key":"海龟","name":"海龟┃影视","type": 3,"api": "./laozhang/海龟.js","searchable":1,"changeable": 1,"jar":"./jar/zhang.jar"},
-{"key":"金牌影院","name":"金牌影院┃影视","type": 3,"api": "./laozhang/金牌影院.js","searchable":1,"changeable": 1,"jar":"./jar/zhang.jar"},
 {"key":"永乐视频","name":"永乐视频┃影视","type": 3,"api": "./laozhang/永乐视频.js","searchable":1,"changeable": 1,"jar":"./jar/zhang.jar"},
 {"key":"apple","name":"苹果┃影视","type": 3,"api": "./laozhang/apple.js","changeable": 1,"jar":"./jar/zhang.jar"},
 {"key":"极速资源","name":"极速资源","type":1,"api":"https://jszyapi.com/api.php/provide/vod/at/json","searchable":1,"quickSearch":1,"filterable":1},
