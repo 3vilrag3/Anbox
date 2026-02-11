@@ -7,9 +7,9 @@
 
  var rule = {
 	title:'独播库[飞]',
-	// host:'https://www.duboku.tv',
-	host:'https://u.duboku.io',
-	// host:'https://w.duboku.io',
+	// host:'https://www.dbku.tv/',
+	host:'https://www.dbku.tv/',
+	// host:'https://www.dbku.tv/,
 	url: '/vodtype/fyclass-fypage.html',
 	// url: '/vodshow/fyfilter.html',
 	// filterable:1,//是否启用分类筛选,
