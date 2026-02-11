@@ -1,5 +1,5 @@
 var rule = {
-    title: '荐片',
+    title: '荐片[优]',
     //host: 'https://api.ubj83.com',
     //host: 'https://ij1men.slsw6.com',
     host: 'https://ev5356.970xw.com',
