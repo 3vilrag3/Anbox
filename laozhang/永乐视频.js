@@ -1,4 +1,4 @@
-let host = 'https://www.ylys.tv/';
+let host = 'https://www.inmi.app';
 let headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
     "Referer": host + "/"
