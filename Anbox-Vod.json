@@ -61,7 +61,8 @@
       "name": "荐片",
       "type": 4
       },
-{"key":"荐片","name":"荐片(SP)","api":"csp_Jianpian","type":3,"playerType":"2","ext":"https://github.com/3vilrag3/Anbox-Vod/blob/main/%E8%8D%90%E7%89%87.js"},
+{"key":"瓜子","name":"🍉┃瓜子┃影视","type":3,"api":"csp_GuaziAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":"https://cloud.7so.top/f/1r61hq/guazi.json","jar":"./jar/嗷嗚.png;md5;796c14b118450f2325a5c8a0d2ce341d"},
+{"name":"🥔┃瓜子┃秒播","key":"Guazi","type":3,"api":"csp_GuaziAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/guazi.json","jar":"./jar/嗷嗚.png;md5;796c14b118450f2325a5c8a0d2ce341d"},
 {"key":"极速资源","name":"极速资源","type":1,"api":"https://jszyapi.com/api.php/provide/vod/at/json","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"优酷资源","name":"优酷资源","type":1,"api":"https://api.ukuapi88.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"百度影视","name":"百度影视","type":1,"api":"https://api.apibdzy.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
