@@ -1,6 +1,6 @@
 var rule={
 		title:'爱壹帆',
-		host:'https://www.iyf1.tv',
+		host:'https://www.iyf.tv/',
 		//url:'/index.php/vod/show/id/fyclass/page/fypage.html',
  		searchUrl:'/index.php/vod/search/page/fypage/wd/**.html',
 		searchable:2,//是否启用全局搜索,
