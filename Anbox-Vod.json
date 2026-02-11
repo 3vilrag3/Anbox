@@ -89,7 +89,7 @@
 {"key":"1080资源库","name":"1080资源库","type":1,"api":"https://api.1080zyku.com/inc/api_mac10.php","searchable":1,"quickSearch":1},
 {"key":"量子资源","name":"量子资源","type": 0,"api":"https://cj.lziapi.com/api.php/provide/vod/at/xml/", "searchable": 1, "quickSearch": 1, "filterable": 1 },
 {"key":"非凡资源","name":"非凡资源","type": 0,"api":"http://cj.ffzyapi.com/api.php/provide/vod/at/xml/", "searchable": 1, "quickSearch": 1, "filterable": 1 },
-{"key":"淘片资源","name":"淘片资源,","type":1,"api":"https://taopianapi.com/cjapi/mc/vod/json.html","searchable":1,"quickSearch":1,"filterable":1}, 
+{"key":"淘片资源","name":"淘片资源","type":1,"api":"https://taopianapi.com/cjapi/mc/vod/json.html","searchable":1,"quickSearch":1,"filterable":1}, 
     {
       "api": "https://py.doube.eu.org/static/py/dytt.min.py",
       "categories": [
