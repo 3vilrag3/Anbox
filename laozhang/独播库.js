@@ -1,204 +1,177 @@
-const host = 'https://api.dbokutv.com';
-const headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-    "Referer": "https://www.duboku.tv/"
-};
+/**
+ * 20240217 筛选页功能关闭中
+ * 影视TV 超連結跳轉支持
+ * https://t.me/fongmi_offical/
+ * https://github.com/FongMi/Release/tree/main/apk
+ */
 
-function base64Encode(text) {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-    let b64 = '';
-    for (let i = 0; i < text.length; i += 3) {
-        let n = (text.charCodeAt(i) << 16) | (text.charCodeAt(i + 1) << 8) | text.charCodeAt(i + 2);
-        b64 += chars.charAt((n >> 18) & 63)
-            + chars.charAt((n >> 12) & 63)
-            + chars.charAt((n >> 6) & 63)
-            + chars.charAt(n & 63);
-    }
-    let mod = text.length % 3;
-    return (mod ? b64.slice(0, mod - 3) + "===".substring(mod) : b64);
-}
-
-function base64Decode(str) {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-    str = str.replace(/=/g, '');
-    let bin = '';
-    for (let i = 0; i < str.length; i += 4) {
-        let n = (chars.indexOf(str.charAt(i)) << 18)
-            | (chars.indexOf(str.charAt(i + 1)) << 12)
-            | (chars.indexOf(str.charAt(i + 2)) << 6)
-            | chars.indexOf(str.charAt(i + 3));
-        bin += String.fromCharCode((n >> 16) & 255, (n >> 8) & 255, n & 255);
-    }
-    return bin.replace(/\0/g, '');
-}
-
-function decodeData(data) {
-    if (!data || typeof data !== 'string') return '';
-    let strippedStr = data.replace(/['"]/g, '').trim();
-    if (!strippedStr) return '';
-    let segmentLength = 10;
-    let processedBase64 = '';
-    for (let i = 0; i < strippedStr.length; i += segmentLength) {
-        let segment = strippedStr.substring(i, i + segmentLength);
-        processedBase64 += segment.split('').reverse().join('');
-    }
-    processedBase64 = processedBase64.replace(/\./g, '=');
-    try {
-        return base64Decode(processedBase64);
-    } catch (e) {
-        return '';
-    }
-}
-
-function getSignedUrl(path) {
-    const timestamp = Math.floor(Date.now() / 1000).toString();
-    const randomNumber = Math.floor(Math.random() * 800000001);
-    const valueA = (randomNumber + 100000000).toString();
-    const valueB = (900000000 - randomNumber).toString();
-    const combined = valueA + valueB;
-
-    let interleaved = '';
-    let minLen = Math.min(combined.length, timestamp.length);
-    for (let i = 0; i < minLen; i++) {
-        interleaved += combined[i] + timestamp[i];
-    }
-    interleaved += combined.substring(minLen) + timestamp.substring(minLen);
-
-    const ssid = base64Encode(interleaved).replace(/=/g, '.');
-
-    function randomStr(len) {
-        const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        let res = '';
-        for (let i = 0; i < len; i++) res += chars.charAt(Math.floor(Math.random() * chars.length));
-        return res;
-    }
-
-    const sign = randomStr(60);
-    const token = randomStr(38);
-    const connector = path.includes('?') ? '&' : '?';
-    return `${host}${path}${connector}sign=${sign}&token=${token}&ssid=${ssid}`;
-}
-
-async function init(cfg) {}
-
-async function home(filter) {
-    const classes = [
-        { type_id: '2', type_name: '连续剧' },
-        { type_id: '1', type_name: '电影' },
-        { type_id: '3', type_name: '综艺' },
-        { type_id: '4', type_name: '动漫' }
-    ];
-    return JSON.stringify({ class: classes });
-}
-
-async function homeVod() {
-    const url = getSignedUrl('/home');
-    const r = await req(url, { headers });
-    const json = JSON.parse(r.content);
-    let videos = [];
-    json.forEach(group => {
-        (group.VodList || []).forEach(j => {
-            videos.push({
-                vod_id: decodeData(j.DId || j.DuId),
-                vod_name: j.Name,
-                vod_pic: decodeData(j.TnId),
-                vod_remarks: j.Tag
-            });
-        });
-    });
-    return JSON.stringify({ list: videos });
-}
-
-async function category(tid, pg, filter, extend = {}) {
-    let page = pg || 1;
-    let pageStr = page.toString() === '1' ? '' : page.toString();
-    let urlPath = `/vodshow/${tid}--------${pageStr}---`;
-    const url = getSignedUrl(urlPath);
-    const r = await req(url, { headers });
-    const json = JSON.parse(r.content);
-
-    let videos = (json.VodList || []).map(i => ({
-        vod_id: decodeData(i.DId || i.DuId),
-        vod_name: i.Name,
-        vod_pic: decodeData(i.TnId),
-        vod_remarks: i.Tag
-    }));
-
-    let pageCount = page;
-    try {
-        (json.PaginationList || []).forEach(j => {
-            if (j.Type === 'StartEnd') {
-                let parts = decodeData(j.PId || j.PuId).split('-');
-                if (parts.length > 8) pageCount = parseInt(parts[8]);
-            } else if (j.Type === 'ShortPage') {
-                pageCount = parseInt(j.Name.split('/')[1]);
-            }
-        });
-    } catch (e) {}
-
-    return JSON.stringify({
-        page: parseInt(page),
-        pagecount: pageCount || parseInt(page),
-        list: videos
-    });
-}
-
-async function detail(id) {
-    const url = getSignedUrl(id);
-    const r = await req(url, { headers });
-    const data = JSON.parse(r.content);
-
-    const playUrls = (data.Playlist || []).map(i => {
-        return `${i.EpisodeName}$${decodeData(i.VId)}`;
-    }).join('#');
-
-    return JSON.stringify({
-        list: [{
-            vod_id: id,
-            vod_name: data.Name,
-            vod_pic: decodeData(data.TnId),
-            vod_remarks: `评分：${data.Rating}`,
-            vod_year: data.ReleaseYear,
-            vod_area: data.Region,
-            vod_actor: Array.isArray(data.Actor) ? data.Actor.join(',') : data.Actor,
-            vod_director: data.Director,
-            vod_content: data.Description,
-            vod_play_from: '独播库',
-            vod_play_url: playUrls,
-            type_name: `${data.Genre || ''},${data.Scenario || ''}`
-        }]
-    });
-}
-
-async function search(wd, quick, pg = 1) {
-    const url = getSignedUrl('/vodsearch') + `&wd=${encodeURIComponent(wd)}`;
-    const r = await req(url, { headers });
-    const json = JSON.parse(r.content);
-
-    const list = (json || []).map(i => ({
-        vod_id: decodeData(i.DId || i.DuId),
-        vod_name: i.Name,
-        vod_pic: decodeData(i.TnId),
-        vod_remarks: i.Tag
-    }));
-
-    return JSON.stringify({ page: pg, list: list });
-}
-
-async function play(flag, id, flags) {
-    const url = getSignedUrl(id);
-    const r = await req(url, { headers });
-    const res = JSON.parse(r.content);
-
-    return JSON.stringify({
-        parse: 0,
-        url: decodeData(res.HId),
-        header: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-            'Origin': 'https://w.duboku.io',
-            'Referer': 'https://w.duboku.io/'
+ var rule = {
+	title:'独播库[飞]',
+	// host:'https://www.dbku.tv/',
+	host:'https://www.dbku.tv/',
+	// host:'https://www.dbku.tv/',
+	url: '/vodtype/fyclass-fypage.html',
+	// url: '/vodshow/fyfilter.html',
+	// filterable:1,//是否启用分类筛选,
+	// filter_url:'{{fl.cateId}}-{{fl.area}}-{{fl.by}}-{{fl.class}}-{{fl.lang}}-{{fl.letter}}---fypage---{{fl.year}}',
+	// filter:{
+	// 	"2":[{"key":"cateId","name":"类型","value":[{"n":"全部","v":"2"},{"n":"陆剧","v":"13"},{"n":"日韩剧","v":"15"},{"n":"短剧","v":"21"},{"n":"台泰剧","v":"14"},{"n":"港剧","v":"20"}],"init":"2"},{"key":"class","name":"剧情","value":[{"n":"全部","v":""},{"n":"悬疑","v":"悬疑"},{"n":"武侠","v":"武侠"},{"n":"科幻","v":"科幻"},{"n":"都市","v":"都市"},{"n":"爱情","v":"爱情"},{"n":"古装","v":"古装"},{"n":"战争","v":"战争"},{"n":"青春","v":"青春"},{"n":"偶像","v":"偶像"},{"n":"喜剧","v":"喜剧"},{"n":"家庭","v":"家庭"},{"n":"犯罪","v":"犯罪"},{"n":"奇幻","v":"奇幻"},{"n":"剧情","v":"剧情"},{"n":"乡村","v":"乡村"},{"n":"年代","v":"年代"},{"n":"警匪","v":"警匪"},{"n":"谍战","v":"谍战"},{"n":"冒险","v":"冒险"},{"n":"罪案","v":"罪案"},{"n":"宫廷","v":"宫廷"},{"n":"BL","v":"BL"}],"init":""},{"key":"area","name":"地区","value":[{"n":"全部","v":""},{"n":"内地","v":"内地"},{"n":"韩国","v":"韩国"},{"n":"香港","v":"香港"},{"n":"台湾","v":"台湾"},{"n":"美国","v":"美国"},{"n":"英国","v":"英国"},{"n":"巴西","v":"巴西"},{"n":"泰国","v":"泰国"},{"n":"法国","v":"法国"},{"n":"日本","v":"日本"},{"n":"荷兰","v":"荷兰"}],"init":""},{"key":"lang","name":"语言","value":[{"n":"全部","v":""},{"n":"国语","v":"国语"},{"n":"英语","v":"英语"},{"n":"粤语","v":"粤语"},{"n":"韩语","v":"韩语"},{"n":"泰语","v":"泰语"},{"n":"法语","v":"法语"},{"n":"日语","v":"日语"}],"init":""},{"key":"year","name":"年份","value":[{"n":"全部","v":""},{"n":"2024","v":"2024"},{"n":"2023","v":"2023"},{"n":"2022","v":"2022"},{"n":"2021","v":"2021"},{"n":"2020","v":"2020"},{"n":"2019","v":"2019"},{"n":"2018","v":"2018"},{"n":"2017","v":"2017"}],"init":""},{"key":"letter","name":"字母","value":[{"n":"全部","v":""},{"n":"A","v":"A"},{"n":"B","v":"B"},{"n":"C","v":"C"},{"n":"D","v":"D"},{"n":"E","v":"E"},{"n":"F","v":"F"},{"n":"G","v":"G"},{"n":"H","v":"H"},{"n":"I","v":"I"},{"n":"J","v":"J"},{"n":"K","v":"K"},{"n":"L","v":"L"},{"n":"M","v":"M"},{"n":"N","v":"N"},{"n":"O","v":"O"},{"n":"P","v":"P"},{"n":"Q","v":"Q"},{"n":"R","v":"R"},{"n":"S","v":"S"},{"n":"T","v":"T"},{"n":"U","v":"U"},{"n":"V","v":"V"},{"n":"W","v":"W"},{"n":"X","v":"X"},{"n":"Y","v":"Y"},{"n":"Z","v":"Z"}],"init":""},{"key":"by","name":"排序","value":[{"n":"时间","v":"time"},{"n":"人气","v":"hits"},{"n":"评分","v":"score"}],"init":"time"}],
+	// 	"1":[{"key":"class","name":"剧情","value":[{"n":"全部","v":""},{"n":"喜剧","v":"喜剧"},{"n":"爱情","v":"爱情"},{"n":"恐怖","v":"恐怖"},{"n":"动作","v":"动作"},{"n":"科幻","v":"科幻"},{"n":"剧情","v":"剧情"},{"n":"战争","v":"战争"},{"n":"警匪","v":"警匪"},{"n":"犯罪","v":"犯罪"},{"n":"动画","v":"动画"},{"n":"奇幻","v":"奇幻"},{"n":"武侠","v":"武侠"},{"n":"冒险","v":"冒险"},{"n":"枪战","v":"枪战"},{"n":"悬疑","v":"悬疑"},{"n":"惊悚","v":"惊悚"},{"n":"青春","v":"青春"},{"n":"文艺","v":"文艺"},{"n":"古装","v":"古装"},{"n":"纪录片","v":"纪录片"},{"n":"歌舞","v":"歌舞"}],"init":""},{"key":"area","name":"地区","value":[{"n":"全部","v":""},{"n":"大陆","v":"大陆"},{"n":"香港","v":"香港"},{"n":"台湾","v":"台湾"},{"n":"美国","v":"美国"},{"n":"英国","v":"英国"},{"n":"日本","v":"日本"},{"n":"韩国","v":"韩国"},{"n":"印度","v":"印度"},{"n":"西班牙","v":"西班牙"},{"n":"加拿大","v":"加拿大"},{"n":"法国","v":"法国"},{"n":"意大利","v":"意大利"},{"n":"荷兰","v":"荷兰"},{"n":"澳大利亚","v":"澳大利亚"},{"n":"俄罗斯","v":"俄罗斯"}],"init":""},{"key":"lang","name":"语言","value":[{"n":"全部","v":""},{"n":"国语","v":"国语"},{"n":"英语","v":"英语"},{"n":"粤语","v":"粤语"},{"n":"韩语","v":"韩语"},{"n":"日语","v":"日语"},{"n":"西班牙语","v":"西班牙语"},{"n":"印地语","v":"印地语"},{"n":"意大利语","v":"意大利语"},{"n":"阿拉伯语","v":"阿拉伯语"},{"n":"法语","v":"法语"},{"n":"俄语","v":"俄语"}],"init":""},{"key":"year","name":"年份","value":[{"n":"全部","v":""},{"n":"2024","v":"2024"},{"n":"2023","v":"2023"},{"n":"2022","v":"2022"},{"n":"2021","v":"2021"},{"n":"2020","v":"2020"},{"n":"2019","v":"2019"},{"n":"2018","v":"2018"},{"n":"2017","v":"2017"}],"init":""},{"key":"letter","name":"字母","value":[{"n":"全部","v":""},{"n":"A","v":"A"},{"n":"B","v":"B"},{"n":"C","v":"C"},{"n":"D","v":"D"},{"n":"E","v":"E"},{"n":"F","v":"F"},{"n":"G","v":"G"},{"n":"H","v":"H"},{"n":"I","v":"I"},{"n":"J","v":"J"},{"n":"K","v":"K"},{"n":"L","v":"L"},{"n":"M","v":"M"},{"n":"N","v":"N"},{"n":"O","v":"O"},{"n":"P","v":"P"},{"n":"Q","v":"Q"},{"n":"R","v":"R"},{"n":"S","v":"S"},{"n":"T","v":"T"},{"n":"U","v":"U"},{"n":"V","v":"V"},{"n":"W","v":"W"},{"n":"X","v":"X"},{"n":"Y","v":"Y"},{"n":"Z","v":"Z"}],"init":""},{"key":"by","name":"排序","value":[{"n":"时间","v":"time"},{"n":"人气","v":"hits"},{"n":"评分","v":"score"}],"init":"time"}],
+	// 	"3":[{"key":"class","name":"剧情","value":[{"n":"全部","v":""},{"n":"真人秀","v":"真人秀"},{"n":"选秀","v":"选秀"},{"n":"竞演","v":"竞演"},{"n":"情感","v":"情感"},{"n":"访谈","v":"访谈"},{"n":"播报","v":"播报"},{"n":"旅游","v":"旅游"},{"n":"音乐","v":"音乐"},{"n":"美食","v":"美食"},{"n":"纪实","v":"纪实"},{"n":"曲艺","v":"曲艺"},{"n":"生活","v":"生活"},{"n":"游戏互动","v":"游戏互动"}],"init":""},{"key":"area","name":"地区","value":[{"n":"全部","v":""},{"n":"内地","v":"内地"},{"n":"香港","v":"香港"},{"n":"台湾","v":"台湾"},{"n":"韩国","v":"韩国"},{"n":"美国","v":"美国"}],"init":""},{"key":"lang","name":"语言","value":[{"n":"全部","v":""},{"n":"国语","v":"国语"},{"n":"英语","v":"英语"},{"n":"粤语","v":"粤语"},{"n":"闽南语","v":"闽南语"},{"n":"韩语","v":"韩语"},{"n":"日语","v":"日语"},{"n":"其它","v":"其它"}],"init":""},{"key":"year","name":"年份","value":[{"n":"全部","v":""},{"n":"2024","v":"2024"},{"n":"2023","v":"2023"},{"n":"2022","v":"2022"},{"n":"2021","v":"2021"},{"n":"2020","v":"2020"},{"n":"2019","v":"2019"},{"n":"2018","v":"2018"},{"n":"2017","v":"2017"}],"init":""},{"key":"letter","name":"字母","value":[{"n":"全部","v":""},{"n":"A","v":"A"},{"n":"B","v":"B"},{"n":"C","v":"C"},{"n":"D","v":"D"},{"n":"E","v":"E"},{"n":"F","v":"F"},{"n":"G","v":"G"},{"n":"H","v":"H"},{"n":"I","v":"I"},{"n":"J","v":"J"},{"n":"K","v":"K"},{"n":"L","v":"L"},{"n":"M","v":"M"},{"n":"N","v":"N"},{"n":"O","v":"O"},{"n":"P","v":"P"},{"n":"Q","v":"Q"},{"n":"R","v":"R"},{"n":"S","v":"S"},{"n":"T","v":"T"},{"n":"U","v":"U"},{"n":"V","v":"V"},{"n":"W","v":"W"},{"n":"X","v":"X"},{"n":"Y","v":"Y"},{"n":"Z","v":"Z"}],"init":""},{"key":"by","name":"排序","value":[{"n":"时间","v":"time"},{"n":"人气","v":"hits"},{"n":"评分","v":"score"}],"init":"time"}],
+	// 	"4":[{"key":"class","name":"剧情","value":[{"n":"全部","v":""},{"n":"玄幻","v":"玄幻"},{"n":"武侠","v":"武侠"},{"n":"情感","v":"情感"},{"n":"科幻","v":"科幻"},{"n":"热血","v":"热血"},{"n":"推理","v":"推理"},{"n":"搞笑","v":"搞笑"},{"n":"冒险","v":"冒险"},{"n":"萝莉","v":"萝莉"},{"n":"校园","v":"校园"},{"n":"动作","v":"动作"},{"n":"机战","v":"机战"},{"n":"运动","v":"运动"},{"n":"战争","v":"战争"},{"n":"少年","v":"少年"},{"n":"少女","v":"少女"},{"n":"社会","v":"社会"},{"n":"亲子","v":"亲子"},{"n":"益智","v":"益智"},{"n":"励志","v":"励志"},{"n":"其他","v":"其他"}],"init":""},{"key":"area","name":"地区","value":[{"n":"全部","v":""},{"n":"国产","v":"国产"},{"n":"日本","v":"日本"},{"n":"美国","v":"美国"},{"n":"法国","v":"法国"},{"n":"其他","v":"其他"}],"init":""},{"key":"lang","name":"语言","value":[{"n":"全部","v":""},{"n":"国语","v":"国语"},{"n":"英语","v":"英语"},{"n":"粤语","v":"粤语"},{"n":"闽南语","v":"闽南语"},{"n":"韩语","v":"韩语"},{"n":"日语","v":"日语"},{"n":"其它","v":"其它"}],"init":""},{"key":"year","name":"年份","value":[{"n":"全部","v":""},{"n":"2024","v":"2024"},{"n":"2023","v":"2023"},{"n":"2022","v":"2022"},{"n":"2021","v":"2021"},{"n":"2020","v":"2020"},{"n":"2019","v":"2019"},{"n":"2018","v":"2018"},{"n":"2017","v":"2017"}],"init":""},{"key":"letter","name":"字母","value":[{"n":"全部","v":""},{"n":"A","v":"A"},{"n":"B","v":"B"},{"n":"C","v":"C"},{"n":"D","v":"D"},{"n":"E","v":"E"},{"n":"F","v":"F"},{"n":"G","v":"G"},{"n":"H","v":"H"},{"n":"I","v":"I"},{"n":"J","v":"J"},{"n":"K","v":"K"},{"n":"L","v":"L"},{"n":"M","v":"M"},{"n":"N","v":"N"},{"n":"O","v":"O"},{"n":"P","v":"P"},{"n":"Q","v":"Q"},{"n":"R","v":"R"},{"n":"S","v":"S"},{"n":"T","v":"T"},{"n":"U","v":"U"},{"n":"V","v":"V"},{"n":"W","v":"W"},{"n":"X","v":"X"},{"n":"Y","v":"Y"},{"n":"Z","v":"Z"}],"init":""},{"key":"by","name":"排序","value":[{"n":"时间","v":"time"},{"n":"人气","v":"hits"},{"n":"评分","v":"score"}],"init":"time"}],
+	// 	"13":[{"key":"class","name":"剧情","value":[{"n":"全部","v":""},{"n":"悬疑","v":"悬疑"},{"n":"武侠","v":"武侠"},{"n":"科幻","v":"科幻"},{"n":"都市","v":"都市"},{"n":"爱情","v":"爱情"},{"n":"古装","v":"古装"},{"n":"战争","v":"战争"},{"n":"青春","v":"青春"},{"n":"偶像","v":"偶像"},{"n":"喜剧","v":"喜剧"},{"n":"家庭","v":"家庭"},{"n":"犯罪","v":"犯罪"},{"n":"奇幻","v":"奇幻"},{"n":"剧情","v":"剧情"},{"n":"乡村","v":"乡村"},{"n":"年代","v":"年代"},{"n":"警匪","v":"警匪"},{"n":"谍战","v":"谍战"},{"n":"冒险","v":"冒险"},{"n":"罪案","v":"罪案"},{"n":"宫廷","v":"宫廷"},{"n":"BL","v":"BL"}],"init":""},{"key":"year","name":"年份","value":[{"n":"全部","v":""},{"n":"2024","v":"2024"},{"n":"2023","v":"2023"},{"n":"2022","v":"2022"},{"n":"2021","v":"2021"},{"n":"2020","v":"2020"},{"n":"2019","v":"2019"},{"n":"2018","v":"2018"},{"n":"2017","v":"2017"}],"init":""},{"key":"letter","name":"字母","value":[{"n":"全部","v":""},{"n":"A","v":"A"},{"n":"B","v":"B"},{"n":"C","v":"C"},{"n":"D","v":"D"},{"n":"E","v":"E"},{"n":"F","v":"F"},{"n":"G","v":"G"},{"n":"H","v":"H"},{"n":"I","v":"I"},{"n":"J","v":"J"},{"n":"K","v":"K"},{"n":"L","v":"L"},{"n":"M","v":"M"},{"n":"N","v":"N"},{"n":"O","v":"O"},{"n":"P","v":"P"},{"n":"Q","v":"Q"},{"n":"R","v":"R"},{"n":"S","v":"S"},{"n":"T","v":"T"},{"n":"U","v":"U"},{"n":"V","v":"V"},{"n":"W","v":"W"},{"n":"X","v":"X"},{"n":"Y","v":"Y"},{"n":"Z","v":"Z"}],"init":""},{"key":"by","name":"排序","value":[{"n":"时间","v":"time"},{"n":"人气","v":"hits"},{"n":"评分","v":"score"}],"init":"time"}],
+	// 	"15":[{"key":"class","name":"剧情","value":[{"n":"全部","v":""},{"n":"悬疑","v":"悬疑"},{"n":"武侠","v":"武侠"},{"n":"科幻","v":"科幻"},{"n":"都市","v":"都市"},{"n":"爱情","v":"爱情"},{"n":"古装","v":"古装"},{"n":"战争","v":"战争"},{"n":"青春","v":"青春"},{"n":"偶像","v":"偶像"},{"n":"喜剧","v":"喜剧"},{"n":"家庭","v":"家庭"},{"n":"犯罪","v":"犯罪"},{"n":"奇幻","v":"奇幻"},{"n":"剧情","v":"剧情"},{"n":"乡村","v":"乡村"},{"n":"年代","v":"年代"},{"n":"警匪","v":"警匪"},{"n":"谍战","v":"谍战"},{"n":"冒险","v":"冒险"},{"n":"罪案","v":"罪案"},{"n":"宫廷","v":"宫廷"},{"n":"BL","v":"BL"}],"init":""},{"key":"area","name":"地区","value":[{"n":"全部","v":""},{"n":"韩国","v":"韩国"},{"n":"日本","v":"日本"}],"init":""},{"key":"lang","name":"语言","value":[{"n":"全部","v":""},{"n":"韩语","v":"韩语"},{"n":"日语","v":"日语"}],"init":""},{"key":"year","name":"年份","value":[{"n":"全部","v":""},{"n":"2024","v":"2024"},{"n":"2023","v":"2023"},{"n":"2022","v":"2022"},{"n":"2021","v":"2021"},{"n":"2020","v":"2020"},{"n":"2019","v":"2019"},{"n":"2018","v":"2018"},{"n":"2017","v":"2017"}],"init":""},{"key":"letter","name":"字母","value":[{"n":"全部","v":""},{"n":"A","v":"A"},{"n":"B","v":"B"},{"n":"C","v":"C"},{"n":"D","v":"D"},{"n":"E","v":"E"},{"n":"F","v":"F"},{"n":"G","v":"G"},{"n":"H","v":"H"},{"n":"I","v":"I"},{"n":"J","v":"J"},{"n":"K","v":"K"},{"n":"L","v":"L"},{"n":"M","v":"M"},{"n":"N","v":"N"},{"n":"O","v":"O"},{"n":"P","v":"P"},{"n":"Q","v":"Q"},{"n":"R","v":"R"},{"n":"S","v":"S"},{"n":"T","v":"T"},{"n":"U","v":"U"},{"n":"V","v":"V"},{"n":"W","v":"W"},{"n":"X","v":"X"},{"n":"Y","v":"Y"},{"n":"Z","v":"Z"}],"init":""},{"key":"by","name":"排序","value":[{"n":"时间","v":"time"},{"n":"人气","v":"hits"},{"n":"评分","v":"score"}],"init":"time"}],
+	// 	"21":[{"key":"class","name":"剧情","value":[{"n":"全部","v":""},{"n":"悬疑","v":"悬疑"},{"n":"武侠","v":"武侠"},{"n":"科幻","v":"科幻"},{"n":"都市","v":"都市"},{"n":"爱情","v":"爱情"},{"n":"古装","v":"古装"},{"n":"喜剧","v":"喜剧"},{"n":"犯罪","v":"犯罪"},{"n":"奇幻","v":"奇幻"},{"n":"剧情","v":"剧情"}],"init":""},{"key":"year","name":"年份","value":[{"n":"全部","v":""},{"n":"2024","v":"2024"},{"n":"2023","v":"2023"},{"n":"2022","v":"2022"},{"n":"2021","v":"2021"},{"n":"2020","v":"2020"},{"n":"2019","v":"2019"},{"n":"2018","v":"2018"},{"n":"2017","v":"2017"}],"init":""},{"key":"letter","name":"字母","value":[{"n":"全部","v":""},{"n":"A","v":"A"},{"n":"B","v":"B"},{"n":"C","v":"C"},{"n":"D","v":"D"},{"n":"E","v":"E"},{"n":"F","v":"F"},{"n":"G","v":"G"},{"n":"H","v":"H"},{"n":"I","v":"I"},{"n":"J","v":"J"},{"n":"K","v":"K"},{"n":"L","v":"L"},{"n":"M","v":"M"},{"n":"N","v":"N"},{"n":"O","v":"O"},{"n":"P","v":"P"},{"n":"Q","v":"Q"},{"n":"R","v":"R"},{"n":"S","v":"S"},{"n":"T","v":"T"},{"n":"U","v":"U"},{"n":"V","v":"V"},{"n":"W","v":"W"},{"n":"X","v":"X"},{"n":"Y","v":"Y"},{"n":"Z","v":"Z"}],"init":""},{"key":"by","name":"排序","value":[{"n":"时间","v":"time"},{"n":"人气","v":"hits"},{"n":"评分","v":"score"}],"init":"time"}],
+	// 	"14":[{"key":"class","name":"剧情","value":[{"n":"全部","v":""},{"n":"悬疑","v":"悬疑"},{"n":"武侠","v":"武侠"},{"n":"科幻","v":"科幻"},{"n":"都市","v":"都市"},{"n":"爱情","v":"爱情"},{"n":"古装","v":"古装"},{"n":"战争","v":"战争"},{"n":"青春","v":"青春"},{"n":"偶像","v":"偶像"},{"n":"喜剧","v":"喜剧"},{"n":"家庭","v":"家庭"},{"n":"犯罪","v":"犯罪"},{"n":"奇幻","v":"奇幻"},{"n":"剧情","v":"剧情"},{"n":"乡村","v":"乡村"},{"n":"年代","v":"年代"},{"n":"警匪","v":"警匪"},{"n":"谍战","v":"谍战"},{"n":"冒险","v":"冒险"},{"n":"罪案","v":"罪案"},{"n":"宫廷","v":"宫廷"},{"n":"BL","v":"BL"}],"init":""},{"key":"area","name":"地区","value":[{"n":"全部","v":""},{"n":"台湾","v":"台湾"},{"n":"泰国","v":"泰国"}],"init":""},{"key":"lang","name":"语言","value":[{"n":"全部","v":""},{"n":"国语","v":"国语"},{"n":"泰语","v":"泰语"}],"init":""},{"key":"year","name":"年份","value":[{"n":"全部","v":""},{"n":"2024","v":"2024"},{"n":"2023","v":"2023"},{"n":"2022","v":"2022"},{"n":"2021","v":"2021"},{"n":"2020","v":"2020"},{"n":"2019","v":"2019"},{"n":"2018","v":"2018"},{"n":"2017","v":"2017"}],"init":""},{"key":"letter","name":"字母","value":[{"n":"全部","v":""},{"n":"A","v":"A"},{"n":"B","v":"B"},{"n":"C","v":"C"},{"n":"D","v":"D"},{"n":"E","v":"E"},{"n":"F","v":"F"},{"n":"G","v":"G"},{"n":"H","v":"H"},{"n":"I","v":"I"},{"n":"J","v":"J"},{"n":"K","v":"K"},{"n":"L","v":"L"},{"n":"M","v":"M"},{"n":"N","v":"N"},{"n":"O","v":"O"},{"n":"P","v":"P"},{"n":"Q","v":"Q"},{"n":"R","v":"R"},{"n":"S","v":"S"},{"n":"T","v":"T"},{"n":"U","v":"U"},{"n":"V","v":"V"},{"n":"W","v":"W"},{"n":"X","v":"X"},{"n":"Y","v":"Y"},{"n":"Z","v":"Z"}],"init":""},{"key":"by","name":"排序","value":[{"n":"时间","v":"time"},{"n":"人气","v":"hits"},{"n":"评分","v":"score"}],"init":"time"}],
+	// 	"20":[{"key":"class","name":"剧情","value":[{"n":"全部","v":""},{"n":"悬疑","v":"悬疑"},{"n":"武侠","v":"武侠"},{"n":"科幻","v":"科幻"},{"n":"传奇","v":"传奇"},{"n":"都市","v":"都市"},{"n":"爱情","v":"爱情"},{"n":"古装","v":"古装"},{"n":"战争","v":"战争"},{"n":"青春","v":"青春"},{"n":"偶像","v":"偶像"},{"n":"喜剧","v":"喜剧"},{"n":"家庭","v":"家庭"},{"n":"犯罪","v":"犯罪"},{"n":"奇幻","v":"奇幻"},{"n":"剧情","v":"剧情"},{"n":"乡村","v":"乡村"},{"n":"年代","v":"年代"},{"n":"警匪","v":"警匪"},{"n":"谍战","v":"谍战"},{"n":"冒险","v":"冒险"},{"n":"罪案","v":"罪案"},{"n":"宫廷","v":"宫廷"},{"n":"魔幻","v":"魔幻"}],"init":""},{"key":"year","name":"年份","value":[{"n":"全部","v":""},{"n":"2024","v":"2024"},{"n":"2023","v":"2023"},{"n":"2022","v":"2022"},{"n":"2021","v":"2021"},{"n":"2020","v":"2020"},{"n":"2019","v":"2019"},{"n":"2018","v":"2018"},{"n":"2017","v":"2017"}],"init":""},{"key":"letter","name":"字母","value":[{"n":"全部","v":""},{"n":"A","v":"A"},{"n":"B","v":"B"},{"n":"C","v":"C"},{"n":"D","v":"D"},{"n":"E","v":"E"},{"n":"F","v":"F"},{"n":"G","v":"G"},{"n":"H","v":"H"},{"n":"I","v":"I"},{"n":"J","v":"J"},{"n":"K","v":"K"},{"n":"L","v":"L"},{"n":"M","v":"M"},{"n":"N","v":"N"},{"n":"O","v":"O"},{"n":"P","v":"P"},{"n":"Q","v":"Q"},{"n":"R","v":"R"},{"n":"S","v":"S"},{"n":"T","v":"T"},{"n":"U","v":"U"},{"n":"V","v":"V"},{"n":"W","v":"W"},{"n":"X","v":"X"},{"n":"Y","v":"Y"},{"n":"Z","v":"Z"}],"init":""},{"key":"by","name":"排序","value":[{"n":"时间","v":"time"},{"n":"人气","v":"hits"},{"n":"评分","v":"score"}],"init":"time"}]
+	// },
+	// filter_def:{
+	// 	2:{cateId:'2'},
+	// 	1:{cateId:'1'},
+	// 	3:{cateId:'3'},
+	// 	4:{cateId:'4'},
+	// 	13:{cateId:'13'},
+	// 	15:{cateId:'15'},
+	// 	21:{cateId:'21'},
+	// 	14:{cateId:'14'},
+	// 	20:{cateId:'20'}
+	// },
+	searchUrl:'/vodsearch/**----------fypage---.html',
+	searchable: 2,
+	class_parse:'.nav-list li;a&&Text;a&&href;.*/(.*?).html',
+	play_parse: true,
+	lazy:`js:
+		var html = JSON.parse(request(input).match(/r player_.*?=(.*?)</)[1]);
+		var url = html.url;
+		var from = html.from;
+		var next = html.link_next;
+		if (html.encrypt == '1') {
+			url = unescape(url)
+		} else if (html.encrypt == '2') {
+			url = unescape(base64Decode(url))
+		} else if (html.encrypt == '3') {
+			url = url.substring(8, url.length);
+			url = base64Decode(url);
+			url = url.substring(8, (url.length) - 8)
+		}
+		if (/\\.m3u8|\\.mp4/.test(url)) {
+			// var sign = request(HOST + '/static/player/' + from + '.php').match(/PlayUrl\\+'(.*?)'/)[1];
+			input = {
+				jx: 0,
+				// url: url+sign,
+				url: url,
+				parse: 0,
+				header: JSON.stringify({
+					// "referer": HOST,
+					'referer': HOST + "/static/player/vidjs.html",
+				}),
+			}
+		} else {
+			input
+		}
+	`,
+	limit: 6,
+	推荐:`js:
+		pdfh = jsp.pdfh, pdfa = jsp.pdfa, pd = jsp.pd;
+		let d = [];
+		let html = request(input);
+		let list = pdfa(html, "ul.myui-vodlist:eq(0)&&li");
+		list.forEach(it => {
+			d.push({
+				title: pdfh(it, "a&&title"),
+				desc: pdfh(it, ".pic-text&&Text") + ' ⭐' + pdfh(it, ".tag&&Text"),
+				pic_url: pd(it, ".lazyload&&data-original"),
+				url: pd(it, "a&&href")
+			})
+		});
+		setResult(d)
+	`,
+	一级:`js:
+		pdfh = jsp.pdfh, pdfa = jsp.pdfa, pd = jsp.pd;
+		let d = [];
+		let html = '';
+		let list = {};
+		if (cateObj.tid.endsWith('_clicklink')) {
+			let tid = cateObj.tid.split('_')[0];
+			input = HOST + '/vodsearch/' + tid + '----------' + MY_PAGE + '---.html';
+			html = request(input);
+			list = pdfa(html, "#searchList&&li");
+		} else {
+			html = request(input);
+			list = pdfa(html, "ul.myui-vodlist&&li");
+		}
+		list.forEach(it => {
+			d.push({
+				title: pdfh(it, "a&&title"),
+				desc: pdfh(it, ".pic-text&&Text") + ' ⭐' + pdfh(it, ".tag&&Text"),
+				pic_url: pd(it, ".lazyload&&data-original"),
+				url: pd(it, "a&&href")
+			})
+		});
+		setResult(d)
+	`,
+	二级:`js:
+		pdfh = jsp.pdfh, pdfa = jsp.pdfa, pd = jsp.pd;
+		function getLink(data) {
+			let link = data.map(it => {
+				return '[a=cr:' + JSON.stringify({'id':it+'_clicklink','name':it}) + '/]' + it + '[/a]'
+			}).join(', ');
+			return link
+		}
+		try {
+			let html = request(input);
+			let vod_actor = pdfh(html, "p.data--span:eq(2)&&Text").split(' ');
+				log('vod_actor ===> ' + vod_actor);
+			let vod_director = pdfh(html, "p.data--span:eq(3)&&Text").split(' ');
+				log('vod_director ===> ' + vod_director);
+			VOD = {
+				vod_name: pdfh(html, "h1&&Text"),
+				type_name: pdfh(html, "p.data--span:eq(0)&&Text"),
+				vod_pic: pd(html, ".lazyload&&data-original"),
+				vod_remarks: pdfh(html, "p.data:eq(1)&&Text"),
+				vod_actor: getLink(vod_actor), // 影视TV click lick
+				vod_director: getLink(vod_director), // 影视TV click lick
+				vod_content: pdfh(html, ".sketch&&Text")
+			};
+			let playFrom = [];
+			let vod_tab_list = [];
+			let tabs = pdfa(html, "body .nav-tabs");
+			tabs.forEach((it) => {
+				playFrom.push(pdfh(it, "a&&Text"))
+			});
+			for (let i = 0; i < playFrom.length; i++) {
+				let p1 = ".myui-content__list:eq(#id)&&li".replaceAll("#id", i);
+				let new_vod_list = [];
+				let vodList = [];
+				try {
+					vodList = pdfa(html, p1)
+				} catch (e) {}
+				for (let i = 0; i < vodList.length; i++) {
+					let it = vodList[i];
+					new_vod_list.push(pdfh(it, "body&&Text").trim() + "$" + pd(it, "a&&href"))
+				}
+				let vlist = new_vod_list.join("#");
+				vod_tab_list.push(vlist)
+			}
+			VOD.vod_play_from = playFrom.join("$$$");
+			VOD.vod_play_url = vod_tab_list.join("$$$");
+        } catch (e) {
+            log("获取二级详情页发生错误:" + e.message);
         }
-    });
+	`,
+	搜索:`js:
+		pdfh = jsp.pdfh, pdfa = jsp.pdfa, pd = jsp.pd;
+		let d = [];
+		let html = request(input);
+		let list = pdfa(html, "#searchList&&li");
+		list.forEach(it => {
+			d.push({
+				title: pdfh(it, "a&&title"),
+				desc: pdfh(it, ".pic-text&&Text") + ' ⭐' + pdfh(it, ".tag&&Text"),
+				pic_url: pd(it, ".lazyload&&data-original"),
+				url: pd(it, "a&&href")
+			})
+		});
+		setResult(d)
+	`,
 }
-
-export default { init, home, homeVod, category, detail, search, play };
