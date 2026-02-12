@@ -77,5 +77,7 @@
     {"key":"暴風资源","name":"暴風资源","type":1,"api":"https://bfzyapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1,"filterable":1},
     {"key":"极速资源","name":"极速资源","type":1,"api":"https://jszyapi.com/api.php/provide/vod/at/json","searchable":1,"quickSearch":1,"filterable":1},
     ]
-  }   
+    }
+  ]
+
 }
