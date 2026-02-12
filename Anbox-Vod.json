@@ -6,62 +6,61 @@
          "name":"愛瓜",
          "type":4,
          "api":"https://newtv.ggff.net/aigua?token=fhJadO1R"
-      },
-    {
-      "api": "https://newtv.ggff.net/duboku?token=fhJadO1R",
-      "key": "獨播庫",
-      "name": "獨播庫",
-      "type": 4
     },
     {
-      "api": "https://newtv.ggff.net/oule?token=fhJadO1R",
-      "key": ". 歐樂影院",
-      "name": "歐樂影院",
-      "type": 4
+         "api": "https://newtv.ggff.net/duboku?token=fhJadO1R",
+         "key": "獨播庫",
+         "name": "獨播庫",
+         "type": 4
+    },
+    {
+         "api": "https://newtv.ggff.net/oule?token=fhJadO1R",
+         "key": ". 歐樂影院",
+         "name": "歐樂影院",
+         "type": 4
     },     
     {
-      "key": "金牌影院",
-      "name": "金牌影院",
-      "type": 3,   
-      "api": "https://tvbot.dpdns.org/py_jinpai.py"
+         "key": "金牌影院",
+         "name": "金牌影院",
+         "type": 3,   
+         "api": "https://tvbot.dpdns.org/py_jinpai.py"
     },       
     {
          "key":"小蘋果",
          "name":"小蘋果",
          "type":4,
          "api":"https://newtv.ggff.net/pingguo?token=fhJadO1R"
-      },
-    {
-      "key":"劇霸",
-      "name":"劇霸",
-      "type":4,
-      "api":"https://newtv.ggff.net/jubaba?token=fhJadO1R"
     },
-      {
+    {
+         "key":"劇霸",
+         "name":"劇霸",
+         "type":4,
+         "api":"https://newtv.ggff.net/jubaba?token=fhJadO1R"
+    },
+    {
          "key":"永樂",
          "name":"永樂",
          "type":4,
          "api":"https://newtv.ggff.net/yongle?token=fhJadO1R"
-      },
-     {
+    },
+    {
          "key":"優視頻",
          "name":"優視頻",
          "type":4,
          "api":"https://newtv.ggff.net/uvod?token=fhJadO1R"
-      }, 
-      {
+    }, 
+    {
          "key":"瓜子",
          "name":"瓜子",
          "type":4,
          "api":"https://newtv.ggff.net/guazi?token=fhJadO1R"
-      },
-    {
-      "api": "https://newtv.ggff.net/jianpian?token=fhJadO1R",
-      "key": "荐片",
-      "name": "荐片",
-      "type": 4
     },
     {
+         "api": "https://newtv.ggff.net/jianpian?token=fhJadO1R",
+         "key": "荐片",
+         "name": "荐片",
+         "type": 4
+    },
     {"key":"电影天堂","name":"电影天堂","type":1,"api":"http://caiji.dyttzyapi.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
     {"key":"爱奇艺","name":"爱奇艺","type":1,"api":"https://iqiyizyapi.com/api.php/provide/vod","searchable":1,"quickSearch":1,"filterable":1},
     {"key":"优酷资源","name":"优酷资源","type":1,"api":"https://api.ukuapi88.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1,"filterable":1},
