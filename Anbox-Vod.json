@@ -5,16 +5,16 @@
          "key":"愛瓜",
          "name":"愛瓜",
          "type":4,
-         "api":"https://newtv.ggff.net/aigua?token=fhJadO1R"
+         "api":"https://newtv.ggff.net/aigua?token=P69Phb_y"
     },
     {
-         "api": "https://newtv.ggff.net/duboku?token=fhJadO1R",
+         "api": "https://newtv.ggff.net/duboku?token=P69Phb_y",
          "key": "獨播庫",
          "name": "獨播庫",
          "type": 4
     },
     {
-         "api": "https://newtv.ggff.net/oule?token=fhJadO1R",
+         "api": "https://newtv.ggff.net/oule?token=P69Phb_y",
          "key": ". 歐樂影院",
          "name": "歐樂影院",
          "type": 4
@@ -29,34 +29,34 @@
          "key":"小蘋果",
          "name":"小蘋果",
          "type":4,
-         "api":"https://newtv.ggff.net/pingguo?token=fhJadO1R"
+         "api":"https://newtv.ggff.net/pingguo?token=P69Phb_y"
     },
     {
          "key":"劇霸",
          "name":"劇霸",
          "type":4,
-         "api":"https://newtv.ggff.net/jubaba?token=fhJadO1R"
+         "api":"https://newtv.ggff.net/jubaba?token=P69Phb_y"
     },
     {
          "key":"永樂",
          "name":"永樂",
          "type":4,
-         "api":"https://newtv.ggff.net/yongle?token=fhJadO1R"
+         "api":"https://newtv.ggff.net/yongle?token=P69Phb_y"
     },
     {
          "key":"優視頻",
          "name":"優視頻",
          "type":4,
-         "api":"https://newtv.ggff.net/uvod?token=fhJadO1R"
+         "api":"https://newtv.ggff.net/uvod?token=P69Phb_y"
     }, 
     {
          "key":"瓜子",
          "name":"瓜子",
          "type":4,
-         "api":"https://newtv.ggff.net/guazi?token=fhJadO1R"
+         "api":"https://newtv.ggff.net/guazi?token=P69Phb_y"
     },
     {
-         "api": "https://newtv.ggff.net/jianpian?token=fhJadO1R",
+         "api": "https://newtv.ggff.net/jianpian?token=P69Phb_y",
          "key": "荐片",
          "name": "荐片",
          "type": 4
