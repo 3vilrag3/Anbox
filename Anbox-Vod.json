@@ -74,7 +74,6 @@
     {"key":"闪电资源","name":"闪电资源","type":1,"api":"https://xsd.sdzyapi.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1,"filterable":1},
     {"key":"无水印资源","name":"无水印资源","type":1,"api":"https://api.wsyzy.net/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1,"filterable":1},
     {"key":"猫眼资源","name":"猫眼资源","type":1,"api":"https://api.maoyanapi.top/api.php/provide/vod/at/json","searchable":1,"quickSearch":1,"filterable":1},
-    {"key":"暴風资源","name":"暴風资源","type":1,"api":"https://bfzyapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1,"filterable":1},
     {"key":"极速资源","name":"极速资源","type":1,"api":"https://jszyapi.com/api.php/provide/vod/at/json","searchable":1,"quickSearch":1,"filterable":1},
     {"key":"天涯资源","name":"天涯资源","type":1,"api":"https://tyyszyapi.com/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
     {"key":"如意资源","name":"如意资源","type":1,"api":"https://cj.rycjapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1},
@@ -98,7 +97,7 @@
     {"key":"非凡资源","name":"非凡资源","type": 0,"api":"http://cj.ffzyapi.com/api.php/provide/vod/at/xml/","searchable": 1, "quickSearch": 1, "filterable": 1 },
     {"key":"淘片资源","name":"淘片资源","type":1,"api":"https://taopianapi.com/cjapi/mc/vod/json.html","searchable":1,"quickSearch":1,"filterable":1}, 
     {"key":"快車","name":"快車","type": 1,"api": "https://caiji.kuaichezy.org/api.php/provide/vod/?ac=list","searchable": 1,"changeable": 1},
-    {"key": "iKun","name": "iKun","type": 1,"api":"https://ikunzyapi.com/api.php/provide/vod/at/json","searchable": 1,"changeable": 1},
+    {"key":"iKun","name": "iKun","type": 1,"api":"https://ikunzyapi.com/api.php/provide/vod/at/json","searchable": 1,"changeable": 1},
     {
       "api": "csp_AiyfAmns",
       "changeable": 1,
