@@ -27,4 +27,3 @@
    {"key":"快車","name":"快車","type": 1,"api": "https://caiji.kuaichezy.org/api.php/provide/vod/?ac=list","searchable": 1,"changeable": 1},
    {"key": "iKun","name": "iKun","type": 1,"api":"https://ikunzyapi.com/api.php/provide/vod/at/json","searchable": 1,"changeable": 1},
  }]
-  }
