@@ -11,111 +11,12 @@
 "https://jihulab.com/yoursmile2/TVBox/-/raw/master/Yoursmile.jar;md5;c6aaf6a9498e1e1d07126779c687bdd8",
 
 
-"lives": [
-{ "name": "公众号【卡卡测评馆】TV直播","type": 1,"url": "https://jikefuye.cn/zhibo.txt"},
+"lives": [],
 
-{"name": "冰茶TV直播","type": 0,"playerType": 2,"url": "https://bc.188766.xyz/?ip=&mima=bingcha1130&huikan=1&json=true","ua": "bingcha/1.1(mianfeifenxiang)"},
-
-{"name": "宫殿TV直播","type": 0,"url":"https://gongdian.top/tv/iptv","playerType": 1,"logo": "https://gongdian.top/tv/taibiao/{name}.png"},
-
-{"name": "猫影TV直播","type":0,"url":"https://iptv.catvod.com/tv.m3u","ua":"Goiptv/8.8.8","timeout":10,"playerType":2},
-
-{ "name": "白雪TV直播","type": 1,"url": "http://bxtv.3a.ink/live.txt"},
-
-{"name": "日后TV直播","type": 0,"url":"http://rihou.cc:555/gggg.nzk","playerType": 2,"ua": "okhttp/3","epg": "https://epg.112114.eu.org/?ch={name}&date={date}","logo": "https://epg.112114.eu.org/logo/{name}.png"},
-
-{ "name": "易发TV直播","type": 1,"url": "https://gh-proxy.org/https://raw.githubusercontent.com/fafa002/yf2025/refs/heads/main/yiyifafa.txt"},
-
-{"name": "潇雨萌萌TV直播","type":0,"url": "https://ds65.tv1288.xyz","playerType":1},
-
-{"name": "JackTV直播{翻}","url": "https://php.946985.filegear-sg.me/jackTV.m3u","header": {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"}},
-
-{"name": "四季TV直播{台湾ip翻}","type": 0,"ua": "okhttp/5.3.2","url":"http://ezc.xtvantsc.xyz/litv.php"}],
-
-
-
-"sites":[{"key":"豆瓣片单|公众号【卡卡测评馆】","name":"豆瓣片单丨公众号【卡卡测评馆】","type":3,"api":"csp_Douban","jar":"https://mpimg.cn/down.php/34dc804020748504a15e2767b37656c3.jar","searchable": 1,"quickSearch":0,"filterable": 1,"ext":"https://jikefuye.cn/geek001.json"
+"sites":[{"key":"马年大吉、财源滚滚、阖家平安、心想事成、喜气洋洋、步步高升","name":"马年大吉、财源滚滚、阖家平安、心想事成、喜气洋洋、步步高升","type":3,"api":"csp_Douban","jar":"https://mpimg.cn/down.php/34dc804020748504a15e2767b37656c3.jar","searchable": 1,"quickSearch":0,"filterable": 1,"ext":"https://jikefuye.cn/geek001.json"
 },
 {"key":"弹幕","name":"🅿嗷嗚弹幕┃刷新一下自动启动","type":3,"api":"csp_GoConfigAmnsr","jar":"https://jihulab.com/yoursmile2/TVBox/-/raw/main/custom_spider.jar"},
-{
-"key":"公众号【卡卡测评馆】电视直播",
-"name":"📺电视丨直播（公众号【卡卡测评馆】）",
-"type":3,
-"searchable":0,
-"changeable":0,
-"api":"https://jikefuye.cn/geek002.js",
-"ext":"https://jikefuye.cn/geek002.json"
-},
-{           "key": "公众号【卡卡测评馆】快手直播",
-            "name": "📺快手丨直播（公众号【卡卡测评馆】）",
-            "type": 3,
-            "api": "csp_AweSomeGuard",
-            "searchable": 0,
-            "quickSearch": 0,
-            "changeable": 0,
-            "filterable": 1,
-            "style": {
-                "type": "rect",
-                "ratio": 1.433
-            },
-            "timeout": 10
-        },
-        {
-            "key": "公众号【卡卡测评馆】斗鱼直播",
-            "name": "📺斗鱼丨直播（公众号【卡卡测评馆】）",
-            "type": 3,
-            "api": "https://7337.kstore.vip/js/drpy2.min.js",
-            "ext": "https://7337.kstore.vip/js/斗鱼直播.js",
-            "style": {
-                "type": "rect",
-                "ratio": 1.597
-            }
-        },
-        {
-            "key": "公众号【卡卡测评馆】虎牙直播",
-            "name": "📺虎牙丨直播",
-            "type": 3,
-            "api": "csp_AweSomeGuard",
-            "searchable": 0,
-            "quickSearch": 0,
-            "changeable": 0,
-            "filterable": 1,
-            "style": {
-                "type": "rect",
-                "ratio": 1.433
-            },
-            "ext": {
-                "sp": "Huya"
-            },
-            "timeout": 10
-        },
-{
-"key":"公众号【卡卡测评馆】哔哩直播",
-"name":"📺哔哩丨直播",
-"type":3,
-"api":"https://mpimg.cn/down.php/d18d26a80c0d820e716be81e51568488.py"
-        },
-        {
-"key":"公众号【卡卡测评馆】韩国直播",
-"name":"📺韩国丨直播",
-"type":3,
-"api":"https://mpimg.cn/down.php/7321244c1cde79a5f876542fbb2fd3a2.py"
-        },
-        {
-      "key": "公众号【卡卡测评馆】央卫视直播",
-      "name": "📺央卫视丨直播",
-      "api": "csp_WvSpider",
-      "type": "3",
-      "jar": "https://mpimg.cn/down.php/c7f900ca93e57df8f44ad8a33be8fa9c.jar",
-      "ext": "https://mpimg.cn/down.php/8302a59aefc8ab325f4069baed36a77b.js"
-       },
-       {
-"key":"公众号【卡卡测评馆】电台直播",
-"name":"📻电台丨直播",
-"type":3,
-"api":"http://rihou.cc:88/js/drpy2.min.js",
-"ext":"http://rihou.cc:88/js/蜻蜓FM.js"
-        },
+
 {"key":"csp_GuaZi","name":"🍉瓜子","type":3,"api":"csp_AweSomeGuard","searchable":1,"changeable":0,"ext":{"commonConfig":"https://ghfast.top/raw.githubusercontent.com/yoursmile66/TVBox/main/json/peizhi.json"}},
 {"key":"巧技二","name":"💢聚搜┃仅搜索","type":3,"api":"csp_qiao2","searchable":1,"quickSearch":1,"filterable":1,"ext":"7lj763gg402i7942412h849jg1558j9jl8g19213il86316k465719lik158491h179312h4934183ig2l05g9"},
 {"key":"天天","name":"⛅天天","type":3,"api":"csp_TTian","searchable":1,"quickSearch":1,"filterable":1,"ext":"7lj763gg0939791h1l3888jig44gi291li"},
@@ -188,8 +89,8 @@
 {"key":"TgYunPan|本地","name":"🅿TgYunPan|本地","type":3,"api":"csp_TgYunPanLocal","searchable":1,"filterable":0,"switchable":0,"ext":{"count":4,"channelUsername":"+P4IU1QbK4ChlNTYx,+h10ulzfxiQZiYTdi,+cpJ_dIx_hlYxMWQx,+Jc37JCr1diEzNDMx,bdwpzhpd,bdwpzhpd,alyp_TV,ucquark,wp123zy,oneonefivewpfx,tyypzhpd,cloudtianyi,ydypzyfx,yunpan139,guaguale115,Mbox115,shares_115,zaihuayun,PanjClub,NewQuark,yunpanpan,kuake_movie,Quark_Movies,alyp_4K_Movies,alyp_TV,yunpanshare,shareAliyun,alyp_1,BaiduCloudDisk","commonConfig":"https://ghfast.top/raw.githubusercontent.com/yoursmile66/TVBox/main/json/peizhi.json"}},
 {"key":"push_agent","name":"🐧裙：1038078591","type":3,"api":"csp_Push","searchable":0,"quickSearch":0,"ext":{"commonConfig":"https://ghfast.top/raw.githubusercontent.com/yoursmile66/TVBox/main/json/peizhi.json"}},
   {
-            "key": "公众号【卡卡测评馆】",
-            "name": "卡卡测评丨糯米丨影视",
+            "key": "糯米丨影视",
+            "name": "糯米丨影视",
             "type": 3,
             "api": "csp_AweSomeGuard",
             "searchable": 1,
@@ -203,16 +104,16 @@
             "timeout": 10
         },
              {
-            "key": "公众号【卡卡测评馆】",
-            "name": "卡卡测评丨酷六丨JS",
+            "key": "酷六丨JS",
+            "name": "酷六丨JS",
             "type": 3,
             "api": "https://wget.la/https://raw.githubusercontent.com/qist/tvbox/master/lib/drpy2.min.js",
             "changeable": 0,
             "ext": "https://wget.la/https://raw.githubusercontent.com/qist/tvbox/master/js/酷6网.js"
              },
             {
-            "key": "公众号【卡卡测评馆】",
-            "name": "卡卡测评丨独播丨JS",
+            "key": "独播丨JS",
+            "name": "卡独播丨JS",
             "type": 3,
             "api": "https://mpimg.cn/down.php/fbe5493683cbef26437721513d495d7d.js",
             "searchable": 1,
@@ -220,7 +121,7 @@
             "filterable": 1
             },
             {
-            "key": "公众号【卡卡测评馆】荐片JS",
+            "key": "荐片丨JS",
             "name": "荐片丨JS",
             "type": 3,
             "api": "https://mpimg.cn/down.php/16ba56f7ddd38134bb0725ad63f1f72b.js",
@@ -231,7 +132,7 @@
             "changeable": 1
             },
             {
-            "key": "公众号【卡卡测评馆】短剧JS",
+            "key": "短剧丨JS",
             "name": "短剧丨JS",
             "type": 3,
             "api": "https://mpimg.cn/down.php/93e0decefe3a2ad8949c5fe389d6cab2.js",
@@ -242,7 +143,7 @@
             "changeable": 1
             },
             {
-            "key": "公众号【卡卡测评馆】海龟JS",
+            "key": "海龟丨JS",
             "name": "海龟丨JS",
             "type": 3,
             "api": "https://mpimg.cn/down.php/f6690a283956c245aee15ef24411afde.js",
@@ -253,7 +154,7 @@
             "changeable": 1
             },
             {
-            "key": "公众号【卡卡测评馆】永乐JS",
+            "key": "永乐丨JS",
             "name": "永乐丨JS",
             "type": 3,
             "api": "https://mpimg.cn/down.php/0338609bd59d7b27226f5a269ec97936.js",
@@ -264,7 +165,7 @@
             "changeable": 1
 },
 {
-            "key": "公众号【卡卡测评馆】金牌JS",
+            "key": "金牌丨JS",
             "name": "金牌丨JS",
             "type": 3,
             "api": "https://mpimg.cn/down.php/af2c84aea46fa071e9d9bfa04a9f86ac.js",
@@ -275,7 +176,7 @@
             "changeable": 1
 },
 {
-"key":"公众号【卡卡测评馆】两个BT",
+"key":"两个BT",
 "name":"2BT丨PY",
 "api":"https://mpimg.cn/down.php/447cf39f4cb26681ecacfd7f29cd0029.py",
 "filterable":1,
@@ -284,7 +185,7 @@
 "type":3
 },
 {
-"key":"公众号【卡卡测评馆】界影PY",
+"key":"界影丨PY",
 "name":"界影丨PY",
 "api":"https://mpimg.cn/down.php/4440a9a56b6d222647a856452eefb21a.py",
 "filterable":1,
@@ -293,7 +194,7 @@
 "type":3
 },
 {
-"key":"公众号【卡卡测评馆】猎手PY",
+"key":"猎手丨PY",
 "name":"猎手丨PY",
 "api":"https://mpimg.cn/down.php/60fab5ff33f0b0fd88f099ae3be708bf.py",
 "filterable":1,
@@ -302,7 +203,7 @@
 "type":3
 },
 {
-"key":"公众号【卡卡测评馆】芒果PY",
+"key":"芒果丨PY",
 "name":"芒果丨PY",
 "api":"https://mpimg.cn/down.php/643d3f9a0b601f25d3e372eeb66e82a5.py",
 "filterable":1,
@@ -323,7 +224,7 @@
 	    	}
     	       },
             {
-            "key": "公众号【卡卡测评馆】采集聚合",
+            "key": "采集丨聚合",
             "name": "采集丨聚合",
             "type": 4,
             "api": "http://zhangqun1818.serv00.net/cj/cjjh.php",
@@ -336,7 +237,7 @@
             "changeable": 1
             },
             {
-            "key": "公众号【卡卡测评馆】JS聚合",
+            "key": "JS丨聚合",
             "name": "JS丨聚合",
             "type": 4,
             "api": "http://zhangqun1818.serv00.net/js.php",
@@ -348,7 +249,7 @@
             "changeable": 1
             },
             {
-            "key": "公众号【卡卡测评馆】PY聚合",
+            "key": "PY丨聚合",
             "name": "PY丨聚合",
             "type": 4,
             "api": "http://zhangqun1818.serv00.net/py.php",
@@ -361,7 +262,7 @@
             }
            },
           {
-            "key": "公众号【卡卡测评馆】php聚合",
+            "key": "PHP丨聚合",
             "name": "PHP丨聚合",
             "type": 4,
             "api": "http://zhangqun1818.serv00.net/php.php",
@@ -370,7 +271,7 @@
             "filterable": 1
 },
 {
-      "key": "dyttcj",
+      "key": "天堂丨采集（含FL",
       "name": "天堂丨采集（含FL）",
       "type": 1,
       "api": "http://dyttzyw.com/api.php/provide/vod/?ac=list",
@@ -409,7 +310,7 @@
       ]
 },
 {
-      "key": "bfzycj",
+      "key": "暴风丨采集",
       "name": "暴风丨采集",
       "type": 1,
       "api": "http://by.bfzyapi.com/api.php/provide/vod",
@@ -461,7 +362,7 @@
       ]
 },
 {
-      "key": "jszycj",
+      "key": "极速丨采集",
       "name": "极速丨采集",
       "type": 1,
       "api": "https://jszyapi.com/api.php/provide/vod/from/jsm3u8/at/json",
