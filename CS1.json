@@ -15,7 +15,6 @@
 
 "sites":[{"key":"马年大吉、财源滚滚、阖家平安、心想事成、喜气洋洋、步步高升","name":"马年大吉、财源滚滚、阖家平安、心想事成、喜气洋洋、步步高升","type":3,"api":"csp_Douban","jar":"https://mpimg.cn/down.php/34dc804020748504a15e2767b37656c3.jar","searchable": 1,"quickSearch":0,"filterable": 1,"ext":"https://jikefuye.cn/geek001.json"
 },
-{"key":"弹幕","name":"🅿嗷嗚弹幕┃刷新一下自动启动","type":3,"api":"csp_GoConfigAmnsr","jar":"https://jihulab.com/yoursmile2/TVBox/-/raw/main/custom_spider.jar"},
 
 {"key":"csp_GuaZi","name":"🍉瓜子","type":3,"api":"csp_AweSomeGuard","searchable":1,"changeable":0,"ext":{"commonConfig":"https://ghfast.top/raw.githubusercontent.com/yoursmile66/TVBox/main/json/peizhi.json"}},
 {"key":"巧技二","name":"💢聚搜┃仅搜索","type":3,"api":"csp_qiao2","searchable":1,"quickSearch":1,"filterable":1,"ext":"7lj763gg402i7942412h849jg1558j9jl8g19213il86316k465719lik158491h179312h4934183ig2l05g9"},
