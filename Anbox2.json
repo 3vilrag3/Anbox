@@ -1,6 +1,6 @@
 { 
   "wallpaper":"",
-  "sites": [      
+  "sites":[      
     {"key":"如意资源","name":"如意资源","type":1,"api":"https://cj.rycjapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1},
     {"key":"魔都资源","name":"魔都资源","type":1,"api":"https://www.mdzyapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1},
     {"key":"ok资源","name":"ok资源","type":1,"api":"https://api.okzyw.net/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
