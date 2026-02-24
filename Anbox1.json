@@ -111,4 +111,4 @@
     {"key":"飞快TV","name":"飞快TV","type":1,"api":"https://feikuai.tv/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
     {"key": "iKun","name": "iKun","type": 1,"api":"https://ikunzyapi.com/api.php/provide/vod/at/json","searchable": 1,"changeable":1}
     ]
-  }
+{
