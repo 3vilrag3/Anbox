@@ -1,5 +1,4 @@
 { 
-  "wallpaper":"",
   "sites":[      
     {"key":"如意资源","name":"如意资源","type":1,"api":"https://cj.rycjapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1},
     {"key":"魔都资源","name":"魔都资源","type":1,"api":"https://www.mdzyapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1},
@@ -25,5 +24,5 @@
     {"key":"淘片资源","name":"淘片资源","type":1,"api":"https://taopianapi.com/cjapi/mc/vod/json.html","searchable":1,"quickSearch":1,"filterable":1}, 
     {"key":"快車","name":"快車","type":1,"api":"https://caiji.kuaichezy.org/api.php/provide/vod/?ac=list","searchable":1,"changeable":1},
     {"key":"飞快TV","name":"飞快TV","type":1,"api":"https://feikuai.tv/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
-    {"key":"iKun","name": "iKun","type":1,"api":"https://ikunzyapi.com/api.php/provide/vod/at/json","searchable":1,"changeable":1}]}
+    {"key":"iKun","name": "iKun","type":1,"api":"https://ikunzyapi.com/api.php/provide/vod/at/json","searchable":1,"changeable":1}]
 
