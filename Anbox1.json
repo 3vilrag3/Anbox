@@ -100,3 +100,5 @@
     {"key":"飞快TV","name":"飞快TV","type":1,"api":"https://feikuai.tv/api.php/provide/vod/?ac=list","searchable":1,"quickSearch":1},
     {"key": "iKun","name": "iKun","type":1,"api":"https://ikunzyapi.com/api.php/provide/vod/at/json","searchable": 1,"changeable":1},
     {"key": "爱壹帆","name":"爱壹帆","type":3,"api":"csp_AiyfAmns","jar":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/bfdb--cvdvds.png","searchable":1,"quickSearch":1,"filterable":1,"changeable":1}]
+  ]
+}
